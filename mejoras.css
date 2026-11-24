@@ -1,33 +1,6 @@
 /* Mejoras del front — capa aparte para no tocar los estilos originales.
    Se carga después de style-principal.css / style-habitar.css. */
 
-/* 1. Menú fijo al bajar: en páginas largas el menú queda siempre a mano */
-.cab {
-  position: sticky;
-  top: 0;
-  transition: padding .3s ease, background-color .3s ease, box-shadow .3s ease;
-}
-.cab.fija {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background: rgba(9, 39, 43, .86);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
-}
-.cab.fija nav > a img { transition: height .3s ease; }
-
-/* 1b. Barra fija más aireada: el menú no queda pegado al borde y el logo
-   conserva su lugar al pasar sobre las secciones claras */
-.cab.fija {
-  padding-top: 18px;
-  padding-bottom: 18px;
-  background: rgba(9, 39, 43, .96);
-  border-bottom: 1px solid rgba(105, 184, 206, .18);
-  box-shadow: 0 10px 30px rgba(9, 39, 43, .18);
-}
-.cab.fija nav > a img { height: 46px; }
-
 /* 1c. Galería «Habitar el agua» más ancha: aprovecha los costados en pantallas grandes */
 @media (min-width: 701px) {
   .gal { max-width: min(1240px, 94vw); }
@@ -85,5 +58,5 @@ img { height: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   .revela { opacity: 1; transform: none; transition: none; }
-  .cab, .arriba { transition: none; }
+  .arriba { transition: none; }
 }
