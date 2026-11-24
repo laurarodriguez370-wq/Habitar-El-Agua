@@ -79,34 +79,51 @@ html {
   counter-reset: paso;
   margin: 0;
   padding: 0;
+  position: relative;
   display: grid;
-  gap: 1rem;
+  gap: 1.6rem;
+}
+
+/* línea vertical que une los pasos */
+.h-pasos::before {
+  content: "";
+  position: absolute;
+  left: 1.05rem;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--agua-300), rgba(105, 184, 206, 0.15));
 }
 
 .h-pasos li {
   counter-increment: paso;
   position: relative;
-  padding: 1.15rem 1.25rem 1.15rem 3.5rem;
-  background: var(--agua-050);
-  border: 1px solid var(--borde-agua);
-  border-radius: 16px;
-  font-size: 0.96rem;
-  line-height: 1.55;
-  color: var(--tinta-900);
+  padding: 0 0 0 3.4rem;
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--tinta-600);
 }
 
+.h-pasos li strong { color: var(--tinta-900); }
+
 .h-pasos li::before {
-  content: "0" counter(paso);
+  content: counter(paso);
   position: absolute;
-  left: 1.15rem;
-  top: 1.15rem;
+  left: 0;
+  top: -0.1rem;
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--agua-700);
   background: #ffffff;
-  border: 1px solid var(--borde-agua);
-  border-radius: 999px;
-  padding: 0.15rem 0.5rem;
+  border: 2px solid var(--agua-300);
+  border-radius: 50%;
 }
 
 /* ============ CARRUSEL DE MEMORIA (.mm-sec) ============ */
@@ -154,46 +171,9 @@ html {
   display: block;
 }
 
-/* Posiciones manejadas por el script del carrusel */
-.mm-card.active {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-  z-index: 5;
-  filter: none;
-}
-
-.mm-card.left {
-  transform: translate(-112%, -50%) scale(0.84);
-  opacity: 0.72;
-  z-index: 3;
-  filter: saturate(0.75);
-}
-
-.mm-card.right {
-  transform: translate(12%, -50%) scale(0.84);
-  opacity: 0.72;
-  z-index: 3;
-  filter: saturate(0.75);
-}
-
-.mm-card.far-left {
-  transform: translate(-155%, -50%) scale(0.68);
-  opacity: 0.25;
-  z-index: 1;
-}
-
-.mm-card.far-right {
-  transform: translate(55%, -50%) scale(0.68);
-  opacity: 0.25;
-  z-index: 1;
-}
-
-.mm-card.hidden {
-  transform: translate(-50%, -50%) scale(0.5);
-  opacity: 0;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Posición, tamaño y escala de cada tarjeta: los calcula el script según la proporción de cada imagen */
+.mm-card.active { cursor: zoom-in; }
+.mm-card.fuera { pointer-events: none; }
 
 .mm-info {
   min-height: 3.6rem;
@@ -519,8 +499,161 @@ html {
 
   .h-hall { grid-template-columns: 1fr; }
 
-  .mm-carrusel { height: 320px; }
-  .mm-card { height: 400px; }
-  .mm-card.far-left,
-  .mm-card.far-right { opacity: 0; }
+}
+
+
+/* =========================================================
+   AJUSTES v2 · cabezote, galerías y lightbox
+   ========================================================= */
+
+/* ---------- CABEZOTE ---------- */
+.hb .hero {
+  position: relative;
+  padding: clamp(70px, 10vw, 120px) var(--lados) clamp(50px, 7vw, 80px);
+  background:
+    radial-gradient(ellipse 70% 90% at 50% 0%, rgba(60, 143, 168, 0.28) 0%, rgba(9, 39, 43, 0) 70%),
+    linear-gradient(180deg, #0b3139 0%, var(--oscuro) 100%);
+  overflow: hidden;
+}
+
+.hb .hero::before,
+.hb .hero::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  border: 1px solid rgba(105, 184, 206, 0.16);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hb .hero::before { width: min(760px, 120vw); aspect-ratio: 1; }
+.hb .hero::after  { width: min(1080px, 170vw); aspect-ratio: 1; border-color: rgba(105, 184, 206, 0.09); }
+
+.hb .hero > * { position: relative; z-index: 1; }
+
+.hb .hero .eyebrow {
+  color: var(--celeste);
+  margin-bottom: 18px;
+}
+
+.hb .hero h1 {
+  color: var(--crema);
+  font-size: clamp(2.8rem, 8vw, 5.4rem);
+  line-height: 1.05;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hb .hero h1 em {
+  color: var(--celeste);
+  font-style: italic;
+}
+
+.hb .hero .lead {
+  max-width: 620px;
+  margin-top: 22px;
+  color: var(--suave);
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.h-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.h-chips li {
+  padding: 7px 16px;
+  border: 1px solid rgba(105, 184, 206, 0.55);
+  border-radius: 999px;
+  background: rgba(105, 184, 206, 0.1);
+  color: var(--crema);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- GALERÍA 1: CARRUSEL ADAPTABLE ---------- */
+.mm-carrusel {
+  height: clamp(300px, 40vw, 400px);
+  touch-action: pan-y;
+}
+
+.mm-card {
+  width: auto;
+  height: auto;
+  background: #ffffff;
+  border: 1px solid var(--borde-agua);
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(14, 63, 80, 0.16);
+  will-change: transform;
+}
+
+.mm-card img {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+/* ---------- GALERÍA 2: PARTICIPANTES ---------- */
+.h-marco img {
+  aspect-ratio: auto;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  background: var(--agua-050);
+}
+
+.h-campo img { object-fit: cover; }
+
+/* ---------- LIGHTBOX CENTRADO ---------- */
+/* El reset global (* {margin:0}) anulaba el centrado nativo del <dialog> */
+.h-lb {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: 94vw;
+  max-height: 94vh;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.h-lb[open] { display: grid; place-items: center; }
+
+.h-lb img {
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: 90vh;
+  margin: 0 auto;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.h-lb button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 860px) {
+  .h-chips li { font-size: 0.76rem; padding: 6px 12px; }
 }
