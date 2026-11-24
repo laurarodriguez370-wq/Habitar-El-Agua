@@ -20,9 +20,7 @@ html {
 }
 
 /* Ajuste de anclas para que el header fijo no tape los títulos */
-.hb [id] 
-
-{
+.hb [id] {
   scroll-margin-top: 5.5rem;
 }
 
