@@ -1,6 +1,5 @@
-/* Mejoras del front: menú fijo, aparición de secciones y botón "volver arriba". */
+/* Mejoras del front: aparición de secciones y botón "volver arriba". */
 (() => {
-  const cab = document.querySelector('.cab');
   const arriba = document.createElement('button');
   arriba.type = 'button';
   arriba.className = 'arriba';
@@ -11,7 +10,6 @@
 
   const alScroll = () => {
     const y = window.scrollY;
-    if (cab) cab.classList.toggle('fija', y > 40);
     arriba.classList.toggle('ver', y > 700);
   };
   window.addEventListener('scroll', alScroll, { passive: true });
