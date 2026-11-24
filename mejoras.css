@@ -61,6 +61,7 @@ img { height: auto; }
 .hb .hero {
   margin-top: -72px;
   padding-top: calc(clamp(70px, 10vw, 120px) + 72px);
+  background: var(--oscuro, #09272b); /* mismo fondo oscuro plano de la portada */
 }
 
 @media (prefers-reduced-motion: reduce) {
