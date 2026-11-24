@@ -64,6 +64,13 @@ img { height: auto; }
   background: var(--oscuro, #09272b); /* mismo fondo oscuro plano de la portada */
 }
 
+/* 7. Párrafo del cabezote de La Bermejala: más ancho para que quede en dos
+   líneas parejas, sin una palabra suelta al final */
+.hb .hero .lead {
+  max-width: min(700px, 100%);
+  text-wrap: pretty;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .revela { opacity: 1; transform: none; transition: none; }
   .arriba { transition: none; }
