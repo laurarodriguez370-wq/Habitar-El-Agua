@@ -56,6 +56,13 @@
 /* 5. Imágenes: evitan saltos de diseño mientras cargan */
 img { height: auto; }
 
+/* 6. Cabezote de La Bermejala: el fondo sube por detrás del logo y el menú,
+   así la parte de arriba tiene un solo tono (sin franja aparte). 72px = alto del encabezado */
+.hb .hero {
+  margin-top: -72px;
+  padding-top: calc(clamp(70px, 10vw, 120px) + 72px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .revela { opacity: 1; transform: none; transition: none; }
   .arriba { transition: none; }
