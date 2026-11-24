@@ -17,6 +17,29 @@
 }
 .cab.fija nav > a img { transition: height .3s ease; }
 
+/* 1b. Barra fija más aireada: el menú no queda pegado al borde y el logo
+   conserva su lugar al pasar sobre las secciones claras */
+.cab.fija {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: rgba(9, 39, 43, .96);
+  border-bottom: 1px solid rgba(105, 184, 206, .18);
+  box-shadow: 0 10px 30px rgba(9, 39, 43, .18);
+}
+.cab.fija nav > a img { height: 46px; }
+
+/* 1c. Galería «Habitar el agua» más ancha: aprovecha los costados en pantallas grandes */
+@media (min-width: 701px) {
+  .gal { max-width: min(1240px, 94vw); }
+  .cv { height: clamp(270px, 27vw, 360px); }
+  .sl {
+    --w: clamp(250px, 24vw, 320px);
+    width: var(--w);
+    height: calc(var(--w) * .88);
+    margin-left: calc(var(--w) / -2);
+  }
+}
+
 /* 2. Aparición suave de las secciones al hacer scroll */
 .revela {
   opacity: 0;
