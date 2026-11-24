@@ -1,0 +1,66 @@
+/* Mejoras del front — capa aparte para no tocar los estilos originales.
+   Se carga después de style-principal.css / style-habitar.css. */
+
+/* 1. Menú fijo al bajar: en páginas largas el menú queda siempre a mano */
+.cab {
+  position: sticky;
+  top: 0;
+  transition: padding .3s ease, background-color .3s ease, box-shadow .3s ease;
+}
+.cab.fija {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background: rgba(9, 39, 43, .86);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+}
+.cab.fija nav > a img { transition: height .3s ease; }
+
+/* 2. Aparición suave de las secciones al hacer scroll */
+.revela {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+.revela.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* 3. Botón "volver arriba" */
+.arriba {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 40;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--celeste, #69b8ce);
+  border-radius: 50%;
+  background: var(--oscuro, #09272b);
+  color: var(--crema, #e8e4d9);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s, background-color .2s ease;
+}
+.arriba.ver { opacity: 1; visibility: visible; transform: none; }
+.arriba:hover { background: var(--azul, #17617a); }
+
+/* 4. Enlace del mapa interactivo: área táctil cómoda en celular */
+.pop a {
+  display: inline-block;
+  padding: 8px 0;
+}
+
+/* 5. Imágenes: evitan saltos de diseño mientras cargan */
+img { height: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .revela { opacity: 1; transform: none; transition: none; }
+  .cab, .arriba { transition: none; }
+}

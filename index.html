@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Habitar el agua · Pascual Bravo</title>
+<meta name="description" content="Desplazamiento, territorio e identidad en comunidades asentadas junto a fuentes hídricas de Medellín. Proyecto de Diseño Gráfico · Pascual Bravo.">
+<meta name="theme-color" content="#09272b">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://henrystark866.github.io/habitar-el-agua/">
+<meta property="og:title" content="Habitar el agua · Pascual Bravo">
+<meta property="og:description" content="Desplazamiento, territorio e identidad en comunidades asentadas junto a fuentes hídricas de Medellín. Proyecto de Diseño Gráfico · Pascual Bravo.">
+<meta property="og:image" content="https://henrystark866.github.io/habitar-el-agua/img/bermejala-1.jpg">
+<link rel="icon" type="image/png" href="img/icono-agua.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style-principal.css">
+<style>
+  body, h1, h2, h3, p, a, span, blockquote {
+    font-family: 'DM Sans', sans-serif;
+  }
+  h1 em, h2 em {
+    font-style: italic;
+  }
+
+  /* 1. PUNTO DE PARTIDA: FONDO CLARO Y DIAGRAMACIÓN EDITORIAL EN 2 COLUMNAS */
+  #punto-de-partida {
+    background-color: #F4F8F8;
+    color: #132A2C;
+    padding: 85px 8%;
+    text-align: left;
+  }
+  #punto-de-partida .txt {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    column-gap: 56px;
+    align-items: start;
+  }
+  #punto-de-partida .eyebrow {
+    grid-column: 1;
+    color: #0F766E;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  #punto-de-partida h2 {
+    grid-column: 1;
+    color: #0B3539;
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0;
+  }
+  #punto-de-partida h2 em {
+    color: #14868B;
+  }
+  #punto-de-partida p {
+    grid-column: 2;
+    color: #334B4E;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 16px 0;
+    text-wrap: pretty;
+  }
+  #punto-de-partida p:first-of-type {
+    grid-row: 1 / 3;
+  }
+
+  /* 2. PILARES: 4 DIMENSIONES, CICLO DE 24s, CONTEXTO + PREGUNTA */
+  @keyframes ciclo4 {
+    0% { opacity: 0; visibility: visible; }
+    3%, 22% { opacity: 1; visibility: visible; }
+    25%, 100% { opacity: 0; visibility: hidden; }
+  }
+  @keyframes marca4 {
+    0%, 22% { background: var(--celeste); color: var(--oscuro); transform: translateY(-3px); }
+    25%, 100% { background: var(--azul); color: var(--crema); transform: none; }
+  }
+  .pp { animation: ciclo4 24s infinite; }
+  .pp2 { animation-delay: 6s; }
+  .pp3 { animation-delay: 12s; }
+  .pp4 { animation-delay: 18s; }
+  .pbt { animation: marca4 24s infinite; }
+  .pbt:nth-child(2) { animation-delay: 6s; }
+  .pbt:nth-child(3) { animation-delay: 12s; }
+  .pbt:nth-child(4) { animation-delay: 18s; }
+  .pbt { width: 140px; }
+
+  #pr4:checked ~ .pv .pp,
+  #pr4:checked ~ .pb .pbt { animation: none; }
+  #pr4:checked ~ .pv .pp4 { opacity: 1; visibility: visible; }
+  #pr4:checked ~ .pb label[for="pr4"] {
+    background: var(--celeste);
+    color: var(--oscuro);
+    transform: translateY(-3px);
+  }
+
+  .pp p.ctx { margin: 0 0 18px; line-height: 1.65; }
+  .pq {
+    margin: 0;
+    padding: 4px 0 4px 18px;
+    border-left: 3px solid var(--celeste);
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.4;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .pq-lab {
+    display: block;
+    margin-bottom: 6px;
+    font-size: .72rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    opacity: .75;
+  }
+  .tag-bermejala {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(105, 184, 206, .18);
+    border: 1px solid var(--celeste);
+    font-size: .8rem;
+    font-weight: 700;
+  }
+  .pi svg { width: 55%; height: 55%; }
+  .pguia { max-width: 760px; margin: 12px auto 0; font-size: 1rem; line-height: 1.6; }
+
+  .nota-mapa { max-width: 640px; margin: 18px auto 0; font-size: .9rem; line-height: 1.6; opacity: .85; }
+
+  /* RESPONSIVE PARA CELULAR */
+  @media (max-width: 820px) {
+    #punto-de-partida .txt {
+      grid-template-columns: 1fr;
+    }
+    #punto-de-partida h2,
+    #punto-de-partida p,
+    #punto-de-partida p:first-of-type {
+      grid-column: 1;
+      grid-row: auto;
+    }
+    #punto-de-partida h2 {
+      margin-bottom: 20px;
+    }
+  }
+</style>
+<link rel="stylesheet" href="mejoras.css">
+</head>
+<body>
+<header class="cab">
+<nav>
+<a href="index.html" aria-label="Inicio"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></a>
+<ul class="menu">
+<li><a href="index.html">Inicio</a></li>
+<li><a href="bh1.html" aria-haspopup="true">La Bermejala ▾</a>
+<ul class="sub">
+  <li><a href="bh1.html"><i class="ic" style="--i:var(--i-hab)"></i>Habitar</a></li>
+  
+ 
+</ul>
+</li>
+</ul>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<span class="eyebrow">PIA · Programa de Diseño Gráfico</span>
+<h1>Habitar <em>el agua</em></h1>
+<p class="lead">Desplazamiento, territorio e identidad en comunidades asentadas alrededor de fuentes hídricas de Medellín y el Área Metropolitana.</p>
+</section>
+
+<div class="ola" aria-hidden="true">
+<svg class="a" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#69b8ce" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+<svg class="b" viewBox="0 0 2400 64" preserveAspectRatio="none"><path stroke="#17617a" d="M0 32q150-28 300 0t300 0 300 0 300 0 300 0 300 0 300 0 300 0"/></svg>
+</div>
+
+<section class="sec">
+<div class="gal">
+  <div class="cv">
+    <div class="sl"><img src="img/bermejala-1.jpg" alt="Fotografía 1 de La Bermejala"></div>
+    <div class="sl"><img src="img/bermejala-2.jpg" alt="Fotografía 2 de La Bermejala"></div>
+    <div class="sl"><img src="img/bermejala-3.jpg" alt="Fotografía 3 de La Bermejala"></div>
+    <div class="sl"><img src="img/bermejala-4.jpg" alt="Fotografía 4 de La Bermejala"></div>
+    <div class="sl"><img src="img/bermejala-5.jpg" alt="Fotografía 5 de La Bermejala"></div>
+    <div class="sl"><img src="img/bermejala-6.jpg" alt="Fotografía 6 de La Bermejala"></div>
+  </div>
+  <p class="pie-foto">La Bermejala · Moravia. Fotografías del trabajo de campo.</p>
+</div>
+</section>
+
+<section class="sec c" id="punto-de-partida">
+<div class="txt">
+  <span class="eyebrow">Punto de partida</span>
+  <h2>Un fenómeno <em>territorial y social</em></h2>
+  <p>Desplazamiento, migración, crecimiento urbano y búsqueda de vivienda confluyen, como afluentes, en laderas y zonas próximas a quebradas de Medellín.</p>
+  <p>Estos territorios no se leen solo desde el riesgo: también son espacios donde las comunidades construyen vínculos, memorias, prácticas cotidianas e identidades. Desde una mirada etnográfica, el diseño gráfico interpreta y comunica esas experiencias en una propuesta gráfica y un montaje museográfico.</p>
+</div>
+</section>
+
+<section class="sec c" id="cartografia">
+<span class="eyebrow">Mapa interactivo</span>
+<h2>Cartografía <em>del territorio</em></h2>
+<p style="font-size:.8rem;letter-spacing:.12em;text-transform:uppercase">Pasa el puntero · haz clic en el icono</p>
+<div class="marco"><div class="mapa">
+<img loading="lazy" decoding="async" src="img/mapa.webp" alt="Mapa de Medellín con la quebrada La Bermejala">
+<span class="lab" style="--x:31%;--y:76%">La Bermejala</span>
+
+<div class="hot" style="--x:30.7%;--y:64.7%;--d:0s">
+  <button class="hs" type="button" aria-label="La Bermejala · Moravia"></button>
+  <div class="pop">
+    <img loading="lazy" decoding="async" src="img/bermejala-1.jpg" alt="">
+    <h3>La Bermejala</h3>
+    <small>Moravia · Medellín</small>
+    <p>Mapas, voces y memorias de cinco habitantes sobre la quebrada: una cartografía del sentipensar construida caminando el barrio.</p>
+    <a href="bh1.html">Ir a la sección →</a>
+  </div>
+</div>
+
+
+
+</div></div>
+<p class="nota-mapa">Este mapa ubica el territorio documentado en esta entrega: la quebrada La Bermejala, en Moravia. El proyecto está pensado para sumar otras comunidades asentadas junto a fuentes hídricas de Medellín y el Área Metropolitana.</p>
+</section>
+
+<section class="sec" id="pilares">
+<div class="c">
+  <span class="eyebrow">Marco del proyecto</span>
+  <h2>Pilares <em>del proyecto</em></h2>
+  <p class="pguia">Cuatro dimensiones orientan la investigación. Cada una parte de una pregunta que el trabajo de campo busca responder.</p>
+</div>
+<input class="pr" type="radio" name="pilar" id="pr0" checked aria-label="Rotación automática"><input class="pr" type="radio" name="pilar" id="pr1" aria-label="Habitar"><input class="pr" type="radio" name="pilar" id="pr2" aria-label="Memoria y territorio"><input class="pr" type="radio" name="pilar" id="pr3" aria-label="Identidad y relación con el agua"><input class="pr" type="radio" name="pilar" id="pr4" aria-label="Relación con su anterior territorio">
+<div class="pv">
+<article class="pp pp1">
+  <div class="pi"><i class="ic" style="--i:var(--i-hab)"></i></div>
+  <div>
+    <span class="eyebrow">Dimensión 01 / 04</span>
+    <h3>Habitar</h3>
+    <p class="ctx">Cómo llegaron las comunidades al territorio, cómo lo ocuparon y lo transformaron: la vivienda, la vida cotidiana y la relación entre la casa y la quebrada.</p>
+    <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Cómo las comunidades construyen sus formas de habitar los territorios próximos a las fuentes hídricas?</p>
+  </div>
+</article>
+
+<article class="pp pp2">
+  <div class="pi"><i class="ic" style="--i:var(--i-mem)"></i></div>
+  <div>
+    <span class="eyebrow">Dimensión 02 / 04</span>
+    <h3>Memoria y territorio</h3>
+    <p class="ctx">Los relatos de llegada, los lugares importantes y los acontecimientos que los habitantes recuerdan, y la manera en que pasado y presente se cruzan en el lugar.</p>
+    <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Qué memorias y relatos construyen los habitantes alrededor del territorio que habitan?</p>
+  </div>
+</article>
+
+<article class="pp pp3">
+  <div class="pi"><i class="ic" style="--i:var(--i-identidad)"></i></div>
+  <div>
+    <span class="eyebrow">Dimensión 03 / 04</span>
+    <h3>Identidad y relación con el agua</h3>
+    <p class="ctx">El agua en la vida diaria: sus usos, las prácticas comunitarias, los vínculos afectivos y los imaginarios que los vecinos construyen sobre la quebrada.</p>
+    <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Cómo las relaciones cotidianas con las fuentes hídricas participan en la construcción de identidad territorial?</p>
+    <span class="tag-bermejala">Dimensión desarrollada en esta muestra · La Bermejala</span>
+  </div>
+</article>
+
+<article class="pp pp4">
+  <div class="pi">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="48" cy="12" r="3.5" fill="currentColor" stroke="none"/><path d="M6 46 L24 20 L34 34 L41 26 L58 46 Z"/><path d="M52 56 H14" stroke-dasharray="3 5"/><path d="M18 51 L12 56 L18 61"/></svg>
+  </div>
+  <div>
+    <span class="eyebrow">Dimensión 04 / 04</span>
+    <h3>Relación con su anterior territorio</h3>
+    <p class="ctx">El lugar de origen antes del desplazamiento o la migración: los contextos pasados, los usos del antiguo territorio y los vínculos afectivos que quedaron atrás.</p>
+    <p class="pq"><span class="pq-lab">Pregunta por responder</span>¿Cómo eran las relaciones con su anterior territorio, su anterior paisaje?</p>
+  </div>
+</article>
+</div>
+<div class="pb">
+  <label class="pbt" for="pr1"><i class="ic" style="--i:var(--i-hab)"></i><span>Habitar</span></label>
+  <label class="pbt" for="pr2"><i class="ic" style="--i:var(--i-mem)"></i><span>Memoria</span></label>
+  <label class="pbt" for="pr3"><i class="ic" style="--i:var(--i-identidad)"></i><span>Identidad</span></label>
+  <label class="pbt" for="pr4"><svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 50 L24 22 L34 36 L41 28 L58 50 Z"/></svg><span>Anterior territorio</span></label>
+</div>
+</section>
+
+<section class="sec c">
+<div class="txt" style="max-width:700px">
+  <span class="eyebrow">Conoce más</span>
+  <h2>Una investigación <em>que se dibuja</em></h2>
+  <p>Una investigación etnográfica que usa el diseño gráfico para interpretar, comunicar y poner en escena las experiencias de quienes habitan junto al agua.</p>
+  <a class="btn" href="bh1.html">Explorar La Bermejala ↗</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="voz">
+  <span class="eyebrow">Con la voz de la comunidad</span>
+  <blockquote>“La quebradita hace parte de nosotros mismos, pero que le hagan buen cuidado.”</blockquote>
+  <p>Don Pedro Carmona · Moravia</p>
+</div>
+<div class="cols">
+  <div><h3>Créditos</h3><p>Investigación y diseño: Laura Yazmín Rodríguez Pérez </p> <p>Ilustración: Juan Bermudez</p></div>
+  <div><h3>Universidad</h3><p>Institución Universitaria Pascual Bravo</p><p>Programa de Diseño Gráfico</p><p>Asignatura: Etnografía y Consumo</p></div>
+  <div><h3>Comunidad</h3><p>Personas y organizaciones que compartieron sus relatos y su territorio.</p></div>
+<div class="flogo"><img src="img/logo-pascual-bravo.png" alt="Institución Universitaria Pascual Bravo"></div>
+</div>
+<p class="legal">PIA · Habitar el agua · 2026. Los relatos se publican con el consentimiento de la comunidad.</p>
+</footer>
+<script src="mejoras.js" defer></script>
+</body>
+</html>

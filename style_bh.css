@@ -1,0 +1,360 @@
+/* =========================================================
+   style-habitar.css · Sala Museográfica La Bermejala
+   Complemento de style-principal.css
+   ========================================================= */
+
+:root {
+  --agua-900: #0e3f50;
+  --agua-700: #17617a;
+  --agua-500: #3c8fa8;
+  --agua-300: #69b8ce;
+  --agua-100: #e7f4f8;
+  --agua-050: #f4fafc;
+  --tinta-900: #10262e;
+  --tinta-600: #46616b;
+  --borde-agua: rgba(23, 97, 122, 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ajuste de anclas para que el header fijo no tape los títulos */
+.hb [id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Contenedor interno estándar */
+.h-w {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Bloques temáticos */
+.h-bloque {
+  padding: 4.5rem 0;
+}
+
+.h-claro {
+  background: #ffffff;
+}
+
+.h-hielo {
+  background: var(--agua-050);
+  border-top: 1px solid var(--borde-agua);
+}
+
+.h-bloque h2,
+.mm-sec h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  color: var(--tinta-900);
+  margin: 0.35rem 0 1rem;
+}
+
+.h-bloque h2 em,
+.mm-sec h2 em {
+  font-style: italic;
+  color: var(--agua-700);
+}
+
+.h-lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--tinta-600);
+  max-width: 60ch;
+}
+
+/* ============ DIMENSIÓN 01: INTRO + PASOS ============ */
+.h-intro {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.h-pasos {
+  list-style: none;
+  counter-reset: paso;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.h-pasos li {
+  counter-increment: paso;
+  position: relative;
+  padding: 1.15rem 1.25rem 1.15rem 3.5rem;
+  background: var(--agua-050);
+  border: 1px solid var(--borde-agua);
+  border-radius: 16px;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--tinta-900);
+}
+
+.h-pasos li::before {
+  content: "0" counter(paso);
+  position: absolute;
+  left: 1.15rem;
+  top: 1.15rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--agua-700);
+  background: #ffffff;
+  border: 1px solid var(--borde-agua);
+  border-radius: 999px;
+  padding: 0.15rem 0.5rem;
+}
+
+/* ============ CARRUSEL DE MEMORIA (.mm-sec) ============ */
+.mm-sec {
+  padding: 4.5rem 1.25rem;
+  background: linear-gradient(180deg, var(--agua-050) 0%, #ffffff 100%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.mm-carrusel {
+  position: relative;
+  max-width: 1140px;
+  height: 390px;
+  margin: 2.5rem auto 1.25rem;
+}
+
+.mm-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mm-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(460px, 78vw);
+  height: 520px;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--agua-900);
+  box-shadow: 0 18px 38px rgba(14, 63, 80, 0.18);
+  cursor: pointer;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.55s ease,
+              filter 0.55s ease;
+}
+
+.mm-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Posiciones manejadas por el script del carrusel */
+.mm-card.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 5;
+  filter: none;
+}
+
+.mm-card.left {
+  transform: translate(-112%, -50%) scale(0.84);
+  opacity: 0.72;
+  z-index: 3;
+  filter: saturate(0.75);
+}
+
+.mm-card.right {
+  transform: translate(12%, -50%) scale(0.84);
+  opacity: 0.72;
+  z-index: 3;
+  filter: saturate(0.75);
+}
+
+.mm-card.far-left {
+  transform: translate(-155%, -50%) scale(0.68);
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.mm-card.far-right {
+  transform: translate(55%, -50%) scale(0.68);
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.mm-card.hidden {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mm-info {
+  min-height: 3.6rem;
+  margin-bottom: 1rem;
+}
+
+.mm-info h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--agua-700);
+}
+
+.mm-info p {
+  margin: 0.25rem 0 0;
+  font-size: 0.92rem;
+  color: var(--tinta-600);
+}
+
+.mm-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mm-flecha {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  border: 1px solid var(--borde-agua);
+  background: #ffffff;
+  color: var(--agua-700);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mm-flecha:hover {
+  background: var(--agua-700);
+  color: #ffffff;
+}
+
+.mm-puntos {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mm-punto {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  border: none;
+  padding: 0;
+  background: rgba(23, 97, 122, 0.25);
+  cursor: pointer;
+  transition: width 0.25s ease, background 0.25s ease;
+}
+
+.mm-punto.active {
+  width: 1.6rem;
+  background: var(--agua-700);
+}
+
+/* ============ SALAS DE PARTICIPANTES (.h-salas) ============ */
+.h-salas {
+  display: flex;
+  flex-direction: column;
+}
+
+.h-sala {
+  padding: 4.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid var(--borde-agua);
+}
+
+.h-sala.alt {
+  background: var(--agua-050);
+}
+
+.h-in {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Invierte columnas en salas pares (alt inv) */
+.h-sala.inv .h-obra {
+  order: 2;
+}
+
+.h-sala.inv .h-cartela {
+  order: 1;
+}
+
+.h-obra {
+  margin: 0;
+}
+
+.h-marco {
+  display: block;
+  width: 100%;
+  padding: 0.65rem;
+  background: #ffffff;
+  border: 1px solid var(--borde-agua);
+  border-radius: 18px;
+  box-shadow: 0 14px 32px rgba(23, 97, 122, 0.09);
+  cursor: zoom-in;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.h-marco:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(23, 97, 122, 0.14);
+}
+
+.h-marco img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.h-obra figcaption {
+  margin: 0.65rem 0 0.9rem;
+  font-size: 0.82rem;
+  color: var(--tinta-600);
+  text-align: center;
+}
+
+.h-campo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.h-campo button {
+  padding: 0.35rem;
+  background: #ffffff;
+  border: 1px solid var(--borde-agua);
+  border-radius: 12px;
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.h-campo button:hover {
+  transform: translateY(-2px);
+}
+
+.h-campo img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Cartela curatorial de cada participante */
+.h-cartela h3 {
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  margin: 0
+  }
