@@ -17,6 +17,37 @@
 }
 .cab.fija nav > a img { transition: height .3s ease; }
 
+/* 1b. Botones del menú separados, cada uno en su propia píldora, con animación */
+.menu {
+  gap: 12px;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+.menu > li {
+  animation: menu-entra .6s cubic-bezier(.2, .7, .2, 1) both;
+}
+.menu > li:nth-child(2) { animation-delay: .12s; }
+.menu > li:nth-child(3) { animation-delay: .24s; }
+.menu > li > a {
+  background: var(--azul, #17617a);
+  border: 1px solid rgba(105, 184, 206, .35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  transition: background-color .25s ease, color .25s ease, transform .25s ease,
+              box-shadow .25s ease, border-color .25s ease;
+}
+.menu > li > a:hover,
+.menu > li:focus-within > a {
+  transform: translateY(-3px);
+  border-color: var(--celeste, #69b8ce);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .35), 0 0 0 3px rgba(105, 184, 206, .18);
+}
+.menu > li > a:active { transform: translateY(-1px) scale(.97); }
+@keyframes menu-entra {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* 2. Aparición suave de las secciones al hacer scroll */
 .revela {
   opacity: 0;
@@ -62,5 +93,7 @@ img { height: auto; }
 
 @media (prefers-reduced-motion: reduce) {
   .revela { opacity: 1; transform: none; transition: none; }
-  .cab, .arriba { transition: none; }
+  .cab, .arriba, .menu > li > a { transition: none; }
+  .menu > li { animation: none; }
+  .menu > li > a:hover, .menu > li:focus-within > a { transform: none; }
 }
